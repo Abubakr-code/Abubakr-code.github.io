@@ -129,6 +129,9 @@ section {
       content: "";
       width: 1px;
       height: 56px;
+      @media (max-width: 767px) {
+        height: 28px;
+      }
       background: var(--color-line);
     }
     b {
@@ -246,8 +249,7 @@ section {
 
   /* ── Steps (horizontal) ────────────────────────────── */
   .step-card {
-    @apply shrink-0 w-[300px] md:w-[360px] p-8 md:p-9 flex flex-col;
-    min-height: 330px;
+    @apply shrink-0 w-[270px] md:w-[360px] p-6 md:p-9 flex flex-col min-h-[270px] md:min-h-[330px];
   }
 
   /* ── Why list ──────────────────────────────────────── */
@@ -284,6 +286,27 @@ section {
     }
   }
 
+  /* ── Mobile menu (navbar, < lg) ──────────────────────── */
+  .menu-toggle {
+    @apply grid place-items-center size-10 rounded-full border border-line text-ink cursor-pointer transition-colors;
+    &:hover {
+      @apply border-accent text-accent;
+    }
+  }
+  .mobile-menu {
+    @apply flex flex-col gap-1 px-4 pb-4 pt-1 border-t border-line/60;
+  }
+  .mobile-link {
+    @apply flex items-center gap-4 px-2 py-3 rounded-xl text-[17px] font-medium text-ink transition-colors;
+    .num {
+      @apply text-[15px] w-6;
+    }
+    &:hover,
+    &:active {
+      @apply bg-paper-2;
+    }
+  }
+
   /* ── Theme toggle (navbar) ─────────────────────────── */
   .theme-toggle {
     @apply relative grid place-items-center size-10 rounded-full border border-line text-ink/80 hover:text-accent hover:border-accent cursor-pointer transition-colors;
@@ -303,7 +326,7 @@ section {
 
   /* ── Sound pill (bottom-left) ──────────────────────── */
   .sound-toggle {
-    @apply fixed left-4 bottom-4 md:left-6 md:bottom-6 z-[90] flex items-center gap-2.5 h-11 px-3.5 sm:pl-3.5 sm:pr-4.5 rounded-full bg-ink text-paper text-[13px] font-medium cursor-pointer transition-all duration-300;
+    @apply fixed right-4 bottom-4 md:right-auto md:left-6 md:bottom-6 z-[90] flex items-center gap-2.5 h-11 px-3.5 sm:pl-3.5 sm:pr-4.5 rounded-full bg-ink text-paper text-[13px] font-medium cursor-pointer transition-all duration-300;
     box-shadow:
       0 0 0 1px rgb(255 255 255 / 0.14),
       0 12px 30px -12px rgb(13 13 15 / 0.5);

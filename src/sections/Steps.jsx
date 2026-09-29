@@ -52,7 +52,7 @@ const Steps = () => {
   );
 
   return (
-    <section id="steps" ref={sectionRef} className="relative h-screen overflow-hidden flex items-center">
+    <section id="steps" ref={sectionRef} className="relative h-svh overflow-hidden flex items-start lg:items-center pt-20 lg:pt-0">
       <div className="container-x grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
         {/* LEFT: heading + 3D stage */}
         <div className="lg:col-span-5">
@@ -62,7 +62,7 @@ const Steps = () => {
           <div className="relative h-px bg-line mt-6">
             <div className="steps-progress absolute inset-y-0 left-0 w-full origin-left scale-x-0 bg-accent h-[2px] -top-px" />
           </div>
-          <div className="relative h-[22vh] lg:h-[40vh] mt-2 -mx-5">
+          <div className="relative h-[17vh] lg:h-[40vh] mt-2 -mx-5">
             <MorphScene className="absolute inset-0" shapes={SHAPES} stage={stage} progress={progress} count={2200} distance={9.5} />
             <p className="absolute left-5 bottom-0 font-mono text-[12px] text-muted">
               <span className="text-accent">0{active + 1}</span> · {t(`steps.${steps[active]}.title`)}

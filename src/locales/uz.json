@@ -171,5 +171,7 @@
   "theme.toLight": "Kunduzgi rejim",
   "deploy.tab.appimage": "Linux · AppImage",
   "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
-  "deploy.tab.cli": "CLI (pip)"
+  "deploy.tab.cli": "CLI (pip)",
+  "menu.open": "Menyuni ochish",
+  "menu.close": "Menyuni yopish"
 }

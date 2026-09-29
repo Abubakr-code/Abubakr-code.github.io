@@ -40,7 +40,7 @@ const Numbers = () => {
   const item = numbers[active];
 
   return (
-    <section id="numbers" ref={sectionRef} className="relative h-screen overflow-hidden">
+    <section id="numbers" ref={sectionRef} className="relative h-svh overflow-hidden">
       <div className="container-x h-full grid lg:grid-cols-2 gap-6 items-center pt-20 pb-8">
         <div className="relative z-10 order-2 lg:order-1">
           <SectionLabel index="03">{t("section.numbers")}</SectionLabel>

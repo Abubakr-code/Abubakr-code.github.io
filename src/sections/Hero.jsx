@@ -34,7 +34,7 @@ const Hero = () => {
   );
 
   return (
-    <section id="hero" ref={sectionRef} className="relative overflow-hidden flex flex-col min-h-screen">
+    <section id="hero" ref={sectionRef} className="relative overflow-hidden flex flex-col min-h-svh">
       {/* dotted texture, lower-left like a print halftone */}
       <div
         className="absolute left-0 bottom-0 w-[55%] h-[60%] dots pointer-events-none"

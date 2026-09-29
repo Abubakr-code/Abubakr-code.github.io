@@ -53,7 +53,11 @@ const buildShader = (n) => {
   };
 };
 
-const Morph = ({ shapes, count, stage, progress, size, spin }) => {
+// Phones get ~60% of the points: same shapes, lighter GPU and memory load.
+const SMALL_SCREEN = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
+
+const Morph = ({ shapes, count: requested, stage, progress, size, spin }) => {
+  const count = SMALL_SCREEN ? Math.round(requested * 0.6) : requested;
   const group = useRef();
   const view = useThree((s) => s.size);
   const geometry = useMemo(() => buildGeometry(shapes, count), [shapes, count]);
