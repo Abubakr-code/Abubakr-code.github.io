@@ -210,6 +210,10 @@ export const createAmbient = () => {
   document.addEventListener("visibilitychange", onVisibility);
 
   return {
+    /** True when the browser already lets this page play sound (no gesture needed). */
+    get allowed() {
+      return ctx.state === "running";
+    },
     async start() {
       await ctx.resume();
       if (timer) return;

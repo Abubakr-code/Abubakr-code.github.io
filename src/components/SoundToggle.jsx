@@ -5,11 +5,12 @@ import { createAmbient } from "../audio/ambient";
 
 const KEY = "armorix_sound";
 
+// Music is on by default; only an explicit "off" from the visitor keeps it silent.
 const readPref = () => {
   try {
-    return localStorage.getItem(KEY) === "on";
+    return localStorage.getItem(KEY) !== "off";
   } catch {
-    return false;
+    return true;
   }
 };
 
@@ -21,8 +22,8 @@ const writePref = (on) => {
   }
 };
 
-// Bottom-left sound pill. Browsers only allow audio after a user gesture, so
-// a returning visitor who left music on hears it from their first click/key.
+// Sound pill. Music starts with the visitor's first click / tap / key press (browsers
+// forbid sound before that) unless they switched it off before — that choice is remembered.
 const SoundToggle = () => {
   const { t } = useTranslation();
   const engine = useRef(null);
@@ -43,20 +44,24 @@ const SoundToggle = () => {
 
   useEffect(() => {
     if (!readPref()) return undefined;
-    const detach = () => {
-      window.removeEventListener("pointerdown", resume);
-      window.removeEventListener("keydown", resume);
-    };
+    // Browsers block sound until the first user gesture. Try right away (allowed for
+    // sites the visitor engages with often), otherwise start on the first click / tap / key.
+    engine.current ??= createAmbient();
+    if (engine.current.allowed) {
+      engine.current.start();
+      setOn(true);
+      return undefined;
+    }
+    const events = ["pointerdown", "keydown", "touchend"];
+    const detach = () => events.forEach((e) => window.removeEventListener(e, resume, true));
     function resume(e) {
       detach();
       // A click on the pill itself is handled by its own onClick.
       if (e.target.closest?.(".sound-toggle")) return;
-      engine.current ??= createAmbient();
       engine.current.start();
       setOn(true);
     }
-    window.addEventListener("pointerdown", resume);
-    window.addEventListener("keydown", resume);
+    events.forEach((e) => window.addEventListener(e, resume, true));
     return detach;
   }, []);
 
