@@ -83,7 +83,7 @@
   "about.c1.title": "Air-gapped isolation",
   "about.c1.desc": "Works fully with the network cable unplugged. Not a single request leaves the box.",
   "about.c2.title": "AST-level analysis",
-  "about.c2.desc": "Reads the syntax tree, not lines of text: C, C++, Go, Rust, Python and JavaScript.",
+  "about.c2.desc": "Reads the syntax tree, not lines of text: JavaScript / TypeScript, Python, PHP, Go, Java, C and C++.",
   "about.c3.title": "Local neural engine",
   "about.c3.desc": "Ollama, Qwen, Llama on your own GPU. No API keys, no token bills.",
   "about.c4.title": "Automated patches",
@@ -170,9 +170,10 @@
   "theme.toDark": "Dark mode",
   "theme.toLight": "Light mode",
   "deploy.tab.appimage": "Linux · AppImage",
-  "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
-  "deploy.tab.cli": "CLI (pip)",
+  "deploy.tab.deb": "Ubuntu / Kali · .deb",
+  "deploy.tab.cli": "CLI · Linux / macOS",
   "menu.open": "Open menu",
   "menu.close": "Close menu",
-  "deploy.vscode": "Extension · .vsix"
+  "deploy.vscode": "Extension · .vsix",
+  "deploy.tab.windows": "CLI · Windows"
 }

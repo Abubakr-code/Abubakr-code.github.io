@@ -26,7 +26,7 @@ Dizayn yo'nalishi: "paper & signal" — och qog'oz fon (`paper #f4f4f1`), qora m
   - `Experience.jsx` — 06 "Ichkarida": sticky katta raqam + terminal + imkoniyatlar.
   - `TechStack.jsx` — 07 oq plitkalarda 10 ta 3D logo (bitta WebGL kontekst, drei `View`, `frameloop="demand"`).
   - `TaintLab.jsx` — 08 qora bo'lim: interaktiv taint-oqim laboratoriyasi (3D AST graf).
-  - `Contact.jsx` — 09 O'rnatish: CLI panel (7/12) va zarrachali noutbuk (`DevLaptop`, 5/12) xl'da bir xil balandlikda (640px); paket hajmi (MB) ko'rsatilmaydi.
+  - `Contact.jsx` — 09 O'rnatish: CLI panel (7/12) va zarrachali noutbuk (`DevLaptop`, 5/12) xl'da bir xil balandlikda (640px); paket hajmi (MB) ko'rsatilmaydi. Tablar: AppImage, .deb, CLI (`curl …/install.sh | sh`), Windows (`irm …/install.ps1 | iex`) — `pip` ishlatilmaydi. `public/install.sh` va `public/install.ps1` engine repodagi `install/` bilan bir xil bo'lsin.
   - `Footer.jsx` — qora; katta ARMORIX zarrachalardan (`footer/ParticleWordmark`, additive glow, sichqonchaga reaksiya).
 - `src/components/` — `NavBar` (UZ | RU | EN ichida), `SectionLabel` ("01  BIR JUMLADA"), `Preloader`, `SoundToggle` (pastki-chap musiqa tugmasi).
 - `src/audio/ambient.js` — Web Audio API bilan generatsiya qilinadigan fon musiqasi (fayl va tarmoqsiz); sukut bo'yicha yoqilgan — brauzerlar birinchi bosishgacha ovozga ruxsat bermagani uchun birinchi click/tap/tugma bosilishida boshlanadi (ruxsat bo'lsa darhol); foydalanuvchi o'chirsa `localStorage.armorix_sound = "off"` eslab qolinadi.

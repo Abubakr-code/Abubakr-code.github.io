@@ -10,32 +10,44 @@ import ContactExperience from "../components/models/contact/ContactExperience";
 // Files come from the GitHub Releases built by armorix-engine/.github/workflows/release.yml.
 const APPIMAGE = "Armorix-linux-x86_64.AppImage";
 const DEB = "Armorix-linux-amd64.deb";
+const SITE = "https://abubakr-code.github.io";
+
 const METHODS = {
   appimage: {
     cmd: `wget ${RELEASES_URL}/${APPIMAGE} && chmod +x ${APPIMAGE} && ./${APPIMAGE}`,
     out: [
       ["text-white/50", `[i] ${APPIMAGE} — desktop app, no install needed`],
-      ["text-accent-2", "[✓] Engine, rules and AI runtime bundled"],
+      ["text-accent-2", "[✓] Engine, 39 rules and the AI runtime are bundled"],
       ["text-mint", "[+] Air-gapped mode: ACTIVE (0 external connections)"],
-      ["text-white", "→ choose a folder, type: «chuqur tekshir»"],
+      ["text-white", "→ drop a project folder onto the window"],
     ],
   },
   deb: {
     cmd: `wget ${RELEASES_URL}/${DEB} && sudo apt install ./${DEB}`,
     out: [
       ["text-white/50", "Reading package lists... Done"],
-      ["text-white/80", "Setting up armorix (0.1.0) ..."],
+      ["text-white/80", "Setting up armorix-desktop (0.3.0) ..."],
       ["text-accent-2", "[✓] Menu entry: Development → Armorix"],
+      ["text-accent-2", "[✓] Terminal command: armorix"],
       ["text-mint", "[+] Telemetry: none"],
     ],
   },
   cli: {
-    cmd: `pip install git+${REPO_URL} && armorix scan . --lang uz`,
+    cmd: `curl -fsSL ${SITE}/install.sh | sh`,
     out: [
-      ["text-white/50", "[i] 16 AST rules · OSV dependency check · AI fixes"],
-      ["text-accent-2", "[✓] armorix db update   — offline CVE database"],
-      ["text-accent-2", "[✓] armorix fix . --apply — verified AI patches"],
-      ["text-mint", "[✓] armorix hook install — block risky commits"],
+      ["text-white/50", "armorix downloading armorix-cli-linux-x86_64.tar.gz"],
+      ["text-mint", "armorix checksum verified (SHA-256)"],
+      ["text-accent-2", "armorix installed armorix 0.3.0 → ~/.armorix/bin/armorix"],
+      ["text-white", "$ armorix scan . --lang uz"],
+    ],
+  },
+  windows: {
+    cmd: `irm ${SITE}/install.ps1 | iex`,
+    out: [
+      ["text-white/50", "armorix downloading armorix-cli-windows-x64.zip"],
+      ["text-mint", "armorix checksum verified (SHA-256)"],
+      ["text-accent-2", "armorix installed armorix 0.3.0"],
+      ["text-white", "PS> armorix scan . --lang uz"],
     ],
   },
 };

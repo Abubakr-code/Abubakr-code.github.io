@@ -83,7 +83,7 @@
   "about.c1.title": "Air-gapped изоляция",
   "about.c1.desc": "Полностью работает даже без сетевого кабеля. Ни один запрос не уходит наружу.",
   "about.c2.title": "Анализ на уровне AST",
-  "about.c2.desc": "Читает не строки, а синтаксическое дерево: C, C++, Go, Rust, Python и JavaScript.",
+  "about.c2.desc": "Читает не строки, а синтаксическое дерево: JavaScript / TypeScript, Python, PHP, Go, Java, C и C++.",
   "about.c3.title": "Локальный нейронный движок",
   "about.c3.desc": "Ollama, Qwen, Llama — на вашем GPU. Ни API-ключей, ни расходов на токены.",
   "about.c4.title": "Автоматические патчи",
@@ -170,9 +170,10 @@
   "theme.toDark": "Тёмная тема",
   "theme.toLight": "Светлая тема",
   "deploy.tab.appimage": "Linux · AppImage",
-  "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
-  "deploy.tab.cli": "CLI (pip)",
+  "deploy.tab.deb": "Ubuntu / Kali · .deb",
+  "deploy.tab.cli": "CLI · Linux / macOS",
   "menu.open": "Открыть меню",
   "menu.close": "Закрыть меню",
-  "deploy.vscode": "Расширение · .vsix"
+  "deploy.vscode": "Расширение · .vsix",
+  "deploy.tab.windows": "CLI · Windows"
 }

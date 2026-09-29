@@ -83,7 +83,7 @@
   "about.c1.title": "Air-gapped izolyatsiya",
   "about.c1.desc": "Tarmoq kabeli uzilgan holatda ham to'liq ishlaydi. Birorta ham so'rov tashqariga chiqmaydi.",
   "about.c2.title": "AST darajasidagi tahlil",
-  "about.c2.desc": "Satrlarni emas, sintaksis daraxtini o'qiydi: C, C++, Go, Rust, Python va JavaScript.",
+  "about.c2.desc": "Satrlarni emas, sintaksis daraxtini o'qiydi: JavaScript / TypeScript, Python, PHP, Go, Java, C va C++.",
   "about.c3.title": "Lokal neyron dvigatel",
   "about.c3.desc": "Ollama, Qwen, Llama — o'z GPU'ingizda. API kalit ham, token xarajati ham yo'q.",
   "about.c4.title": "Avtomatik yamoqlar",
@@ -170,9 +170,10 @@
   "theme.toDark": "Tungi rejim",
   "theme.toLight": "Kunduzgi rejim",
   "deploy.tab.appimage": "Linux · AppImage",
-  "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
-  "deploy.tab.cli": "CLI (pip)",
+  "deploy.tab.deb": "Ubuntu / Kali · .deb",
+  "deploy.tab.cli": "CLI · Linux / macOS",
   "menu.open": "Menyuni ochish",
   "menu.close": "Menyuni yopish",
-  "deploy.vscode": "Kengaytma · .vsix"
+  "deploy.vscode": "Kengaytma · .vsix",
+  "deploy.tab.windows": "CLI · Windows"
 }
