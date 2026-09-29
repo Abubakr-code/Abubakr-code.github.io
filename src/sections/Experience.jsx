@@ -1,147 +1,119 @@
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
+import { Check } from "lucide-react";
 
+import SectionLabel from "../components/SectionLabel";
+import MorphScene from "../components/three/MorphScene";
+import { codePage, seal, waves } from "../components/three/shapes";
 import { expCards } from "../constants";
-import TitleHeader from "../components/TitleHeader";
-import GlowCard from "../components/GlowCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// AST engine, zero-network wall, signed report seal.
+const SHAPES = [codePage, waves, seal];
+
+// Sticky oversized index on the left follows whichever deep-dive is in view.
 const Experience = () => {
-  useGSAP(() => {
-    // Loop through each timeline card and animate them in
-    // as the user scrolls to each card
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
-      // Animate the card coming in from the left
-      // and fade in
-      gsap.from(card, {
-        // Move the card in from the left
-        xPercent: -100,
-        // Make the card invisible at the start
-        opacity: 0,
-        // Set the origin of the animation to the left side of the card
-        transformOrigin: "left left",
-        // Animate over 1 second
-        duration: 1,
-        // Use a power2 ease-in-out curve
-        ease: "power2.inOut",
-        // Trigger the animation when the card is 80% of the way down the screen
-        scrollTrigger: {
-          // The card is the trigger element
-          trigger: card,
-          // Trigger the animation when the card is 80% down the screen
-          start: "top 80%",
-        },
-      });
-    });
+  const { t } = useTranslation();
+  const sectionRef = useRef(null);
+  const [active, setActive] = useState(0);
+  const stage = useRef(0);
+  const progress = useRef(0);
 
-    // Animate the timeline height as the user scrolls
-    // from the top of the timeline to 70% down the screen
-    // The timeline height should scale down from 1 to 0
-    // as the user scrolls up the screen
-    gsap.to(".timeline", {
-      // Set the origin of the animation to the bottom of the timeline
-      transformOrigin: "bottom bottom",
-      // Animate the timeline height over 1 second
-      ease: "power1.inOut",
-      // Trigger the animation when the timeline is at the top of the screen
-      // and end it when the timeline is at 70% down the screen
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top center",
-        end: "70% center",
-        // Update the animation as the user scrolls
-        onUpdate: (self) => {
-          // Scale the timeline height as the user scrolls
-          // from 1 to 0 as the user scrolls up the screen
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-          });
-        },
-      },
-    });
-
-    // Loop through each expText element and animate them in
-    // as the user scrolls to each text element
-    gsap.utils.toArray(".expText").forEach((text) => {
-      // Animate the text opacity from 0 to 1
-      // and move it from the left to its final position
-      // over 1 second with a power2 ease-in-out curve
-      gsap.from(text, {
-        // Set the opacity of the text to 0
-        opacity: 0,
-        // Move the text from the left to its final position
-        // (xPercent: 0 means the text is at its final position)
-        xPercent: 0,
-        // Animate over 1 second
-        duration: 1,
-        // Use a power2 ease-in-out curve
-        ease: "power2.inOut",
-        // Trigger the animation when the text is 60% down the screen
-        scrollTrigger: {
-          // The text is the trigger element
-          trigger: text,
-          // Trigger the animation when the text is 60% down the screen
-          start: "top 60%",
-        },
+  useGSAP(
+    () => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => (progress.current = self.progress),
       });
-    }, "<"); // position parameter - insert at the start of the animation
-  }, []);
+      gsap.utils.toArray(".inside-entry").forEach((el, i) => {
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 55%",
+          end: "bottom 55%",
+          onToggle: (self) => {
+            if (!self.isActive) return;
+            setActive(i);
+            stage.current = i;
+          },
+        });
+        gsap.fromTo(
+          el.querySelectorAll(".term-line"),
+          { opacity: 0, x: -8 },
+          { opacity: 1, x: 0, stagger: 0.12, duration: 0.3, scrollTrigger: { trigger: el, start: "top 70%" } }
+        );
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section
-      id="experience"
-      className="flex-center md:mt-40 mt-20 section-padding xl:px-0"
-    >
-      <div className="w-full h-full md:px-20 px-5">
-        <TitleHeader
-          title="Professional Work Experience"
-          sub="💼 My Career Overview"
-        />
-        <div className="mt-32 relative">
-          <div className="relative z-50 xl:space-y-32 space-y-10">
-            {expCards.map((card) => (
-              <div key={card.title} className="exp-card-wrapper">
-                <div className="xl:w-2/6">
-                  <GlowCard card={card}>
-                    <div>
-                      <img src={card.imgPath} alt="exp-img" />
-                    </div>
-                  </GlowCard>
+    <section id="experience" ref={sectionRef} className="relative py-28 md:py-40 bg-paper-2/60">
+      <div className="container-x">
+        <SectionLabel index="06">{t("section.inside")}</SectionLabel>
+        <h2 className="h-section max-w-3xl">{t("exp.title")}</h2>
+
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mt-16">
+          <div className="hidden lg:block lg:col-span-4">
+            <div className="sticky top-28">
+              <p key={active} className="num text-[120px] xl:text-[150px] leading-[0.85] animate-[stat-in_0.5s_ease-out]">
+                0{active + 1}
+              </p>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] mt-4">{t(expCards[active].titleKey)}</p>
+              <div className="progress-dashes mt-6">
+                {expCards.map((c, i) => (
+                  <span key={c.titleKey} className={i <= active ? "on" : ""} />
+                ))}
+              </div>
+              <div className="relative h-[340px] xl:h-[380px] mt-4 -mx-8">
+                <MorphScene className="absolute inset-0" shapes={SHAPES} stage={stage} progress={progress} count={2200} />
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8 space-y-24 md:space-y-32">
+            {expCards.map((card, i) => (
+              <article key={card.titleKey} className="inside-entry">
+                <div className="flex items-baseline gap-4">
+                  <span className="num text-[44px] text-accent lg:hidden">0{i + 1}</span>
+                  <h3 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+                    {t(card.titleKey)}
+                  </h3>
                 </div>
-                <div className="xl:w-4/6">
-                  <div className="flex items-start">
-                    <div className="timeline-wrapper">
-                      <div className="timeline" />
-                      <div className="gradient-line w-1 h-full" />
+                <p className="lead mt-4 max-w-2xl">{t(card.descKey)}</p>
+
+                <div className="terminal mt-8">
+                  <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
+                    <div className="flex gap-1.5">
+                      <span className="size-2.5 rounded-full bg-white/20" />
+                      <span className="size-2.5 rounded-full bg-white/20" />
+                      <span className="size-2.5 rounded-full bg-white/20" />
                     </div>
-                    <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
-                      <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo" />
+                    <span className="font-mono text-[11px] text-white/40">{card.host}</span>
+                  </div>
+                  <div className="p-5 md:p-6 font-mono text-xs md:text-sm leading-7 overflow-x-auto">
+                    {card.lines.map(([cls, text], j) => (
+                      <div key={j} className={`term-line whitespace-pre ${cls}`}>
+                        {text}
                       </div>
-                      <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
-                        <p className="my-5 text-white-50">
-                          🗓️&nbsp;{card.date}
-                        </p>
-                        <p className="text-[#839CB5] italic">
-                          Responsibilities
-                        </p>
-                        <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
-                          {card.responsibilities.map(
-                            (responsibility, index) => (
-                              <li key={index} className="text-lg">
-                                {responsibility}
-                              </li>
-                            )
-                          )}
-                        </ul>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              </div>
+
+                <ul className="grid md:grid-cols-3 gap-4 mt-6">
+                  {card.responsibilitiesKeys.map((key) => (
+                    <li key={key} className="card !shadow-none border border-line p-5 text-sm leading-relaxed text-ink/75">
+                      <Check className="size-4 text-accent mb-3" strokeWidth={2.5} />
+                      {t(key)}
+                    </li>
+                  ))}
+                </ul>
+              </article>
             ))}
           </div>
         </div>

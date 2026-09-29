@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/images/fav.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adrian &mdash;&mdash; Portfolio</title>
+    <meta name="theme-color" content="#f4f4f1" />
+    <meta name="description" content="Armorix — AST-asosidagi lokal statik kod tahlili (SAST). Air-gapped izolyatsiya, CWE-120 / CWE-416 aniqlash, avtomatlashtirilgan kod yamoqlari." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Armorix — Offline Vulnerability Scanner</title>
+    <script>
+      // Apply the theme before first paint (no white flash in night mode). Kept in sync by src/theme.js.
+      try {
+        var t = localStorage.getItem("armorix_theme");
+        if (t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches) document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
