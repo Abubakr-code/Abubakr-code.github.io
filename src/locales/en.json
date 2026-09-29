@@ -173,5 +173,6 @@
   "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
   "deploy.tab.cli": "CLI (pip)",
   "menu.open": "Open menu",
-  "menu.close": "Close menu"
+  "menu.close": "Close menu",
+  "deploy.vscode": "Extension · .vsix"
 }

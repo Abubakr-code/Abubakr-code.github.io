@@ -173,5 +173,6 @@
   "deploy.tab.deb": "Debian / Ubuntu / Kali (.deb)",
   "deploy.tab.cli": "CLI (pip)",
   "menu.open": "Menyuni ochish",
-  "menu.close": "Menyuni yopish"
+  "menu.close": "Menyuni yopish",
+  "deploy.vscode": "Kengaytma · .vsix"
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Apple, Check, Copy, Cpu, Download, HardDrive, Lock, MemoryStick, ShieldCheck, Terminal } from "lucide-react";
+import { Apple, Check, Code2, Copy, Cpu, Download, HardDrive, Lock, MemoryStick, ShieldCheck, Terminal } from "lucide-react";
 
 import SectionLabel from "../components/SectionLabel";
 import { RELEASES_URL, REPO_URL } from "../constants";
@@ -44,6 +44,7 @@ const DOWNLOADS = [
   { name: "Linux", Icon: HardDrive, arch: "AppImage · .deb", href: `${RELEASES_URL}/${APPIMAGE}` },
   { name: "macOS", Icon: Apple, arch: "Apple Silicon", href: `${RELEASES_URL}/Armorix-mac-arm64.dmg` },
   { name: "Windows", Icon: Terminal, arch: "Windows 10 / 11 · x64", href: `${RELEASES_URL}/Armorix-win-x64.exe` },
+  { name: "VS Code", Icon: Code2, archKey: "deploy.vscode", href: `${RELEASES_URL}/Armorix-vscode.vsix` },
 ];
 
 const REQUIREMENTS = [
@@ -126,9 +127,10 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2.5 mt-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-4">
               {DOWNLOADS.map((item) => {
-                const { name, Icon, arch } = item;
+                const { name, Icon, archKey } = item;
+                const arch = archKey ? t(archKey) : item.arch;
                 return (
                   <a key={name} href={item.href} className="os-card group" rel="noopener">
                     <Icon className="size-5 shrink-0 text-ink/80 group-hover:text-accent" />
