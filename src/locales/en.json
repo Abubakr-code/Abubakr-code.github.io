@@ -175,5 +175,6 @@
   "menu.open": "Open menu",
   "menu.close": "Close menu",
   "deploy.vscode": "Extension · .vsix",
-  "deploy.tab.windows": "CLI · Windows"
+  "deploy.tab.windows": "CLI · Windows",
+  "deploy.firstRun": "First launch: if Windows says “Windows protected your PC”, choose “More info → Run anyway”; on macOS right-click the app in Finder → “Open” (or System Settings → Privacy & Security → “Open Anyway”). The app is not yet signed with a paid certificate."
 }

@@ -175,5 +175,6 @@
   "menu.open": "Menyuni ochish",
   "menu.close": "Menyuni yopish",
   "deploy.vscode": "Kengaytma · .vsix",
-  "deploy.tab.windows": "CLI · Windows"
+  "deploy.tab.windows": "CLI · Windows",
+  "deploy.firstRun": "Birinchi ochilishda: Windows «Windows protected your PC» desa — «More info → Run anyway»; macOS'da Finder'da ilovani o'ng tugma → «Open» (yoki Sozlamalar → Maxfiylik → «Open Anyway»). Ilova hozircha pullik sertifikat bilan imzolanmagan."
 }

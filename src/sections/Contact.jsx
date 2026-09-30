@@ -14,9 +14,11 @@ const SITE = "https://abubakr-code.github.io";
 
 const METHODS = {
   appimage: {
-    cmd: `wget ${RELEASES_URL}/${APPIMAGE} && chmod +x ${APPIMAGE} && ./${APPIMAGE}`,
+    // No FUSE (fresh Ubuntu 22.04+, Kali)? The AppImage can unpack itself and run anyway.
+    cmd: `wget ${RELEASES_URL}/${APPIMAGE} && chmod +x ${APPIMAGE} && (./${APPIMAGE} || APPIMAGE_EXTRACT_AND_RUN=1 ./${APPIMAGE})`,
     out: [
       ["text-white/50", `[i] ${APPIMAGE} — desktop app, no install needed`],
+      ["text-white/50", "[i] works without FUSE / libfuse2 too"],
       ["text-accent-2", "[✓] Engine, 39 rules and the AI runtime are bundled"],
       ["text-mint", "[+] Air-gapped mode: ACTIVE (0 external connections)"],
       ["text-white", "→ drop a project folder onto the window"],
@@ -155,8 +157,9 @@ const Contact = () => {
                 );
               })}
             </div>
+            <p className="mt-3 text-[12px] leading-snug text-muted">{t("deploy.firstRun")}</p>
 
-            <ul className="flex flex-wrap gap-2 mt-4 text-[12px] text-ink/75">
+            <ul className="flex flex-wrap gap-2 mt-3 text-[12px] text-ink/75">
               {REQUIREMENTS.map((item) => {
                 const { Icon, key } = item;
                 return (
