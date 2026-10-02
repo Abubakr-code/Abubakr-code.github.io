@@ -40,7 +40,7 @@ export const devPersonas = [
 // 03 — pinned stats; values are language-neutral
 export const numbers = [
   { key: "n1", value: "0 B" },
-  { key: "n2", value: "15,482" },
+  { key: "n2", value: "253,924" },
   { key: "n3", value: "1M+" },
   { key: "n4", value: "100%" },
 ];

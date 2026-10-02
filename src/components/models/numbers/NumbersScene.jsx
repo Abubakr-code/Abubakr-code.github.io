@@ -27,7 +27,7 @@ const SHAPES = [
     }
     return [randomOnSphere(2.2 + (Math.random() - 0.5) * 0.06), grey];
   },
-  // 15,482 signatures — an index lattice, some cells lit.
+  // 253,924 signatures — an index lattice, some cells lit.
   (i) => {
     const n = 14;
     const cell = i % (n * n * n);

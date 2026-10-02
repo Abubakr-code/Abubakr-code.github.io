@@ -112,7 +112,7 @@ const Hero = () => {
           <div className="flex items-center gap-8 shrink-0 text-[13px] text-muted">
             <span className="flex items-baseline gap-2">
               <span className="size-1.5 rounded-sm bg-accent self-center" />
-              <b className="text-ink text-[17px] font-semibold">15,482</b>
+              <b className="text-ink text-[17px] font-semibold">253,924</b>
               {t("hero.stat1")}
             </span>
             <span className="flex items-baseline gap-2">
