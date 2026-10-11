@@ -2,6 +2,11 @@ import { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import useInView from "../../hooks/useInView";
+import { hasWebGL } from "../../utils/webgl";
+import CanvasBoundary from "./CanvasBoundary";
+
+// Static dotted stand-in used when WebGL is unavailable: keeps the layout the same size.
+const Fallback = () => <div className="webgl-fallback" aria-hidden="true" />;
 
 // Canvas wrapper that stops its render loop while offscreen,
 // so only the scenes the visitor can actually see use the GPU.
@@ -11,14 +16,20 @@ const SceneCanvas = ({ children, className = "", dpr = [1, 1.5], gl, ...props })
 
   return (
     <div ref={ref} className={className}>
-      <Canvas
-        frameloop={inView ? "always" : "never"}
-        dpr={dpr}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance", stencil: false, ...gl }}
-        {...props}
-      >
-        {children}
-      </Canvas>
+      {hasWebGL() ? (
+        <CanvasBoundary fallback={<Fallback />}>
+          <Canvas
+            frameloop={inView ? "always" : "never"}
+            dpr={dpr}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance", stencil: false, ...gl }}
+            {...props}
+          >
+            {children}
+          </Canvas>
+        </CanvasBoundary>
+      ) : (
+        <Fallback />
+      )}
     </div>
   );
 };

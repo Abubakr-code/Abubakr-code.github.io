@@ -7,6 +7,8 @@ import * as THREE from "three";
 
 import useInView from "../../../hooks/useInView";
 import { useTheme } from "../../../theme";
+import { hasWebGL } from "../../../utils/webgl";
+import CanvasBoundary from "../../three/CanvasBoundary";
 
 // Resting pose: turned enough that the extrusion depth reads as 3D.
 const REST_Y = -0.45;
@@ -156,7 +158,10 @@ const ScrollInvalidator = () => {
 export const TechViewCanvas = ({ sectionRef }) => {
   const inView = useInView(sectionRef, "100px");
 
+  if (!hasWebGL()) return null; // the tiles stay as plain white cards
+
   return (
+    <CanvasBoundary>
     <Canvas
       frameloop={inView ? "demand" : "never"}
       dpr={[1, 1.5]}
@@ -174,6 +179,7 @@ export const TechViewCanvas = ({ sectionRef }) => {
       <ScrollInvalidator />
       <View.Port />
     </Canvas>
+    </CanvasBoundary>
   );
 };
 

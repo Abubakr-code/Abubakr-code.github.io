@@ -7,13 +7,13 @@ import { Check } from "lucide-react";
 
 import SectionLabel from "../components/SectionLabel";
 import MorphScene from "../components/three/MorphScene";
-import { codePage, seal, waves } from "../components/three/shapes";
+import { codePage, seal, taint, waves } from "../components/three/shapes";
 import { expCards } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// AST engine, zero-network wall, signed report seal.
-const SHAPES = [codePage, waves, seal];
+// AST engine, zero-network wall, signed report seal, proven taint flow.
+const SHAPES = [codePage, waves, seal, taint];
 
 // Sticky oversized index on the left follows whichever deep-dive is in view.
 const Experience = () => {

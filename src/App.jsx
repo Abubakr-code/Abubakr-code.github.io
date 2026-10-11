@@ -2,6 +2,7 @@ import Preloader from "./components/Preloader";
 import Navbar from "./components/NavBar";
 import SoundToggle from "./components/SoundToggle";
 import CustomCursor from "./components/CustomCursor";
+import WebGLNotice from "./components/WebGLNotice";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import ForDevs from "./sections/ForDevs";
@@ -19,6 +20,7 @@ const App = () => (
     <Preloader />
     <Navbar />
     <SoundToggle />
+    <WebGLNotice />
     <main>
       <Hero />
       <About />

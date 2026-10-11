@@ -109,4 +109,18 @@ export const expCards = [
     ],
     responsibilitiesKeys: ["exp.crypto.resp1", "exp.crypto.resp2", "exp.crypto.resp3"],
   },
+  {
+    titleKey: "exp.proof.title",
+    descKey: "exp.proof.desc",
+    host: "armorix · evidence",
+    lines: [
+      ["text-accent-2", "$ armorix scan ./app --min-confidence medium"],
+      ["text-white/85", "[+] ARX-SQLI  CWE-89  critical · confidence: high"],
+      ["text-signal", "[!] ARX-XSS   CWE-79  medium   · confidence: medium"],
+      ["text-white/45", "    1 lower-confidence finding hidden"],
+      ["text-white/45", "Not checked: git history, AI review (--deep)"],
+      ["text-mint", "Done: 2 findings, coverage listed."],
+    ],
+    responsibilitiesKeys: ["exp.proof.resp1", "exp.proof.resp2", "exp.proof.resp3"],
+  },
 ];

@@ -595,6 +595,18 @@ section {
   }
 }
 
+/* Stand-in for a 3D scene when the browser has no WebGL: a faded dot field in the accent colour. */
+.webgl-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background-image: radial-gradient(circle, var(--color-accent) 1.4px, transparent 1.6px);
+  background-size: 18px 18px;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+}
+
 /* ── Grain: film/paper texture over the whole page ─────────
    Static SVG noise (rasterised once, no animation, no blend mode) so it costs
    nothing per frame. Dark specks on light paper; inverted to light specks at night. */
