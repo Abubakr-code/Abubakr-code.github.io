@@ -19,7 +19,7 @@ const METHODS = {
     out: [
       ["text-white/50", `[i] ${APPIMAGE} — desktop app, no install needed`],
       ["text-white/50", "[i] works without FUSE / libfuse2 too"],
-      ["text-accent-2", "[✓] Engine, 39 rules and the AI runtime are bundled"],
+      ["text-accent-2", "[✓] Engine, 43 rules and the AI runtime are bundled"],
       ["text-mint", "[+] Air-gapped mode: ACTIVE (0 external connections)"],
       ["text-white", "→ drop a project folder onto the window"],
     ],

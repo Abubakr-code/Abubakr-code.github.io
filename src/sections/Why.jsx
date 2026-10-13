@@ -11,7 +11,7 @@ import { whyItems } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Air gap, blocked telemetry, neural engine, memory overflow, signed report, CI loop.
+// Air gap, blocked telemetry, neural engine, memory overflow, report formats, CI loop.
 const SHAPES = [airgap, waves, neural, memory, report, infinity];
 
 // Sticky heading on the left, list on the right; the item crossing the

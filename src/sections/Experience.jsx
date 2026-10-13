@@ -12,7 +12,7 @@ import { expCards } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// AST engine, zero-network wall, signed report seal, proven taint flow.
+// AST engine, zero-network wall, report seal (formats), taint trace.
 const SHAPES = [codePage, waves, seal, taint];
 
 // Sticky oversized index on the left follows whichever deep-dive is in view.
@@ -58,7 +58,7 @@ const Experience = () => {
         <SectionLabel index="06">{t("section.inside")}</SectionLabel>
         <h2 className="h-section max-w-3xl">{t("exp.title")}</h2>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mt-16">
           <div className="hidden lg:block lg:col-span-4">
             <div className="sticky top-28">
               <p key={active} className="num text-[120px] xl:text-[150px] leading-[0.85] animate-[stat-in_0.5s_ease-out]">
@@ -78,7 +78,7 @@ const Experience = () => {
 
           <div className="lg:col-span-8 space-y-24 md:space-y-32">
             {expCards.map((card, i) => (
-              <article key={card.titleKey} className="inside-entry">
+              <article key={card.titleKey} className="inside-entry min-w-0">
                 <div className="flex items-baseline gap-4">
                   <span className="num text-[44px] text-accent lg:hidden">0{i + 1}</span>
                   <h3 className="text-3xl md:text-4xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>

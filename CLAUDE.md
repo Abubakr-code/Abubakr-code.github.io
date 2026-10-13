@@ -55,7 +55,10 @@ Dizayn yo'nalishi: "paper & signal" — och qog'oz fon (`paper #f4f4f1`), qora m
 ### A. Professional DevSecOps Leksikoni (Marketing shiorlariga cheklov):
 - Saytda quruq, takroriy shiorlar ishlatilmasin: **"juda xavfsiz"**, **"xavfsiz tizim"**, **"favqulodda xavfsizlik"** kabi so'zlar qat'iyan man etiladi.
 - Ularning o'rniga aniq texnik atamalar ishlatilsin:
-  - *"AST-asosidagi statik kod tahlili"*, *"Air-gapped izolyatsiya"*, *"CWE-120 / CWE-416 aniqlash"*, *"Nol-tarmoq telemetriyasi"*, *"Lokal neyron dvigatel"*, *"Kriptografik audit hisoboti"*, *"Avtomatlashtirilgan kod yamoqlari (patch)"*.
+  - *"AST-asosidagi statik kod tahlili"*, *"Air-gapped izolyatsiya"*, *"CWE-120 / CWE-416 aniqlash"*, *"Nol-tarmoq telemetriyasi"*, *"Lokal neyron dvigatel"*, *"Avtomatlashtirilgan kod yamoqlari (patch)"*.
+  - **Faqat dvigatelda haqiqatan bor narsani yozing.** Reliz (`armorix --version`) nima qilsa, sayt faqat shuni va'da qilsin: skaner `armorix scan` ning o'z chiqishi, qoidalar soni `armorix` sarlavhasidagi son, til qo'llab-quvvatlashi `src/armorix/parsing.py` dagi `GRAMMARS`. Terminal namunalari (`constants/index.js`) o'ylab topilmasin — haqiqiy chiqishdan olinsin.
+  - **"Kriptografik / ECDSA imzolangan audit hisoboti", "Rust", "dinamik tahlil", "imzolangan oflayn paket" yozilmasin** — dvigatelda yo'q (2026-10 tekshiruvi). Hisobot formatlari: terminal, HTML, PDF (desktop), JSON, SARIF, Markdown, GitHub annotatsiyalari. Imzolash haqiqatan qo'shilgandagina bu atamani qaytaring.
+  - Yangi funksiya (masalan `--min-confidence`, `ARX-REDOS`) saytda faqat u **e'lon qilingan relizda** bo'lgandan keyin tilga olinsin.
 
 ### B. 3D Modellar va Matnlar Moslashuvi (Layout Balance):
 - **Hero bo'limi:** Chap tomondagi matn bloki qat'iy ravishda `xl:max-w-[50%]` chegarasida bo'lishi shart. Matnlar (sarlavhalar, tavsiflar) HECH QACHON o'ng tarafdagi 3D xona/kompyuter modeli ustiga chiqib ketmasligi kerak.
